@@ -1,0 +1,14 @@
+{
+  "name": "your-project-name",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "lint": "biome lint .",
+    "format": "biome format . --write",
+    "check": "biome check .",
+    "check:apply": "biome check . --apply"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.5.3"
+  }
+}

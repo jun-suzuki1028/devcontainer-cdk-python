@@ -1,0 +1,45 @@
+[project]
+name = "devcontainer-python"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+
+[dependency-groups]
+dev = [
+    "poethepoet>=0.29.0",
+    "pytest-cov>=5.0.0",
+    "pytest>=8.3.3",
+    "ruff>=0.7.1",
+]
+
+[tool.ruff]
+line-length = 200
+
+[tool.coverage.run]
+branch = true
+source = ["tests"]
+omit = ["tests/fixtures/*"]
+data_file = ".pytest_cache/.coverage"
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "def __str__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "if typing.TYPE_CHECKING:",
+]
+
+[tool.coverage.xml]
+output = ".pytest_cache/coverage.xml"
+
+[tool.poe.tasks]
+lint = "ruff check ."
+test = "pytest"
+cover = "pytest --cov=. --cov-report xml"
+fmt = "ruff format . --check"
+build = ["fmt", "lint", "test"]

@@ -1,0 +1,118 @@
+{
+  "name": "devcontainer-practice",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12-bookworm",
+  "containerEnv": {
+    "TZ": "Asia/Tokyo"
+  },
+  "runArgs": ["--init"],
+  "features": {
+    "ghcr.io/jsburckhardt/devcontainer-features/uv:1": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    }
+  },
+  "postCreateCommand": "./.devcontainer/postCreateCommand.sh",
+  "mounts": [
+    "source=venv-${devcontainerId},target=${containerWorkspaceFolder}/.venv,type=volume",
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.aws,target=/home/vscode/.aws,type=bind,consistency=cached"
+  ],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.renderWhitespace": "all",
+        "python.defaultInterpreterPath": ".venv/bin/python",
+        "python.testing.pytestArgs": ["tests", "--capture=tee-sys", "-vv"],
+        "python.testing.pytestEnabled": true,
+        "[python]": {
+          "editor.defaultFormatter": "charliermarsh.ruff",
+          "editor.formatOnSave": true,
+          "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
+          }
+        },
+        "[typescript]": {
+          "editor.defaultFormatter": "biomejs.biome",
+          "editor.formatOnSave": true,
+          "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit"
+          }
+        },
+        "[markdown]": {
+          "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+        },
+        "[shellscript]": {
+          "editor.defaultFormatter": "foxundermoon.shell-format",
+          "editor.formatOnSave": true
+        },
+        "[yaml]": {
+          "editor.defaultFormatter": "redhat.vscode-yaml",
+          "editor.insertSpaces": true,
+          "editor.tabSize": 2,
+          "cfnLint.validate": true,
+          "cfnLint.path": "/opt/venv/bin/cfn-lint"
+        },
+        "coverage-gutters.showLineCoverage": true,
+        "coverage-gutters.showRulerCoverage": true,
+        "coverage-gutters.coverageFileNames": [".pytest_cache/coverage.xml"],
+        "[json][jsonc]": {
+          "editor.defaultFormatter": "biomejs.biome",
+          "editor.formatOnSave": true,
+          "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit"
+          }
+        },
+        "yaml.customTags": [
+          "!And",
+          "!And sequence",
+          "!If",
+          "!If sequence",
+          "!Not",
+          "!Not sequence",
+          "!Equals",
+          "!Equals sequence",
+          "!Or",
+          "!Or sequence",
+          "!FindInMap",
+          "!FindInMap sequence",
+          "!Base64",
+          "!Join",
+          "!Join sequence",
+          "!Cidr",
+          "!Ref",
+          "!Sub",
+          "!Sub sequence",
+          "!GetAtt",
+          "!GetAZs",
+          "!ImportValue",
+          "!ImportValue sequence",
+          "!Select",
+          "!Select sequence",
+          "!Split",
+          "!Split sequence"
+        ],
+        "workbench.iconTheme": "material-icon-theme"
+      },
+      "extensions": [
+        "ms-python.python",
+        "njpwerner.autodocstring",
+        "KevinRose.vsc-python-indent",
+        "charliermarsh.ruff",
+        "ryanluker.vscode-coverage-gutters",
+        "biomejs.biome",
+        "yzhang.markdown-all-in-one",
+        "foxundermoon.shell-format",
+        "ms-ceintl.vscode-language-pack-ja",
+        "ms-azuretools.vscode-docker",
+        "mechatroner.rainbow-csv",
+        "donjayamanne.githistory",
+        "eamodio.gitlens",
+        "hediet.vscode-drawio",
+        "PKief.material-icon-theme",
+        "tamasfe.even-better-toml",
+        "redhat.vscode-yaml",
+        "amazonwebservices.amazon-q-vscode"
+      ]
+    }
+  }
+}
