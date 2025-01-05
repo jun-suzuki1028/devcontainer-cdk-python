@@ -1,5 +1,5 @@
 
-#　個人用開発環境devcontainer
+## 個人用開発環境devcontainer
 
 個人用によく使うPython、CDK(Typescript)環境構築用のdevcontainerです。
 
@@ -15,28 +15,27 @@ https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-cont
 
 ## 利用方法
 
-リポジトリをcloneします。
+リポジトリを作成する際にテンプレートとして本リポジトリを選択します。。
+リポジトリをcloneしてvscodeからコンテナで起動してください。
+
+### CDKを使う場合
+
+CDKはすでにインストールされているため、インフラ用のフォルダを作成してcdk initします。
+
 ```bash
-git clone https://github.com/jun-suzuki1028/devcontainer-cdk-python.git
+mkdir infra
+cd infra
+cdk init app --language typescript
 ```
 
-他のブログ用に公開予定の場合は、gitを一度削除して利用すること。
-```bash
-rm -rf .git
-git init
-git remote add origin <new-repo-url>
-git add .
-git commit -m "Initial commit with devcontainer settings"
-git push -u origin main
-```
+### python
 
-vscodeで開くとdevcontainerをリビルドするか聞かれるので、コンテナ環境を作成。
-拡張機能等がインストールされたらOK。
+poeを使ったタスクランナーを定義指定しています。詳細は`pyproject.toml`参照してください。
+
+`poe build`でruffによる整形とチェック、mypyの型チェック、テストをまとめて実行可能です。
 
 ### Amazon Qの設定
 READMEを自動作成してくれる機能があるため、とりあえずAmazon Qもデフォルトでインストール対象としている。サインインが必要なため利用する際は下のバーからAmazon Qをクリックしてサインインすること。
-
-
 
 
 ## 参考
