@@ -15,6 +15,26 @@ https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-cont
 
 ## 利用方法
 
+リポジトリをcloneします。
+```bash
+git clone https://github.com/jun-suzuki1028/devcontainer-cdk-python.git
+```
+
+他のブログ用に公開予定の場合は、gitを一度削除して利用すること。
+```bash
+rm -rf .git
+git init
+git remote add origin <new-repo-url>
+git add .
+git commit -m "Initial commit with devcontainer settings"
+git push -u origin main
+```
+
+vscodeで開くとdevcontainerをリビルドするか聞かれるので、コンテナ環境を作成。
+拡張機能等がインストールされたらOK。
+
+### Amazon Qの設定
+READMEを自動作成してくれる機能があるため、とりあえずAmazon Qもデフォルトでインストール対象としている。サインインが必要なため利用する際は下のバーからAmazon Qをクリックしてサインインすること。
 
 
 

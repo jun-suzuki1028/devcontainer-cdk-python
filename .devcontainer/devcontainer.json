@@ -13,7 +13,6 @@
   },
   "postCreateCommand": "./.devcontainer/postCreateCommand.sh",
   "mounts": [
-    "source=venv-${devcontainerId},target=${containerWorkspaceFolder}/.venv,type=volume",
     "source=${localEnv:HOME}${localEnv:USERPROFILE}/.aws,target=/home/vscode/.aws,type=bind,consistency=cached"
   ],
   "customizations": {
@@ -111,7 +110,8 @@
         "PKief.material-icon-theme",
         "tamasfe.even-better-toml",
         "redhat.vscode-yaml",
-        "amazonwebservices.amazon-q-vscode"
+        "amazonwebservices.amazon-q-vscode",
+        "ms-python.mypy-type-checker"
       ]
     }
   }

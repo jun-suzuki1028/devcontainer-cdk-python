@@ -11,6 +11,7 @@ dev = [
     "pytest-cov>=5.0.0",
     "pytest>=8.3.3",
     "ruff>=0.7.1",
+    "mypy>=1.14.1",
 ]
 
 [tool.ruff]
@@ -42,4 +43,13 @@ lint = "ruff check ."
 test = "pytest"
 cover = "pytest --cov=. --cov-report xml"
 fmt = "ruff format . --check"
-build = ["fmt", "lint", "test"]
+typecheck = "mypy"
+build = ["fmt", "lint", "typecheck", "test"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+
+[tool.mypy]
+ignore_missing_imports = true
+disallow_untyped_defs = true
+files = ["src"]
